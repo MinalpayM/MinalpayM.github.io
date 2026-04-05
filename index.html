@@ -1,1 +1,139 @@
-Hellow word
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
+<head>
+    <title>诊所管理系统登录</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            width: 900px;
+            height: 520px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .left {
+            width: 50%;
+            background: url("${pageContext.request.contextPath}/images/clinic_login.png") center/cover no-repeat;
+        }
+
+        .right {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+        }
+
+        .login-box {
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e88e5;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #d0d0d0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .pwd-box {
+            position: relative;
+        }
+
+        .eye {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 100%;
+            background: #1e88e5;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #1565c0;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+ 
+<div class="wrapper">
+    <div class="left"></div>
+
+    <div class="right">
+        <form class="login-box" action="${pageContext.request.contextPath}/login" method="post">
+            <h2>个人诊所管理系统</h2>
+
+            <div class="error">${error}</div>
+
+            <input type="text" name="username" placeholder="用户名" required>
+
+            <div class="pwd-box">
+                <input type="password" id="pwd" name="password" placeholder="密码" required>
+                <span class="eye" onclick="toggle()">👁</span>
+            </div>
+ 
+            <button class="btn">登 录</button>
+        </form>
+    </div>
+</div>
+
+<script>
+	function toggle() {
+	    const pwdInput = document.getElementById("pwd");
+	    if (pwdInput.type === "password") {
+	        pwdInput.type = "text";
+	    } else {
+	        pwdInput.type = "password";
+	    }
+	}
+</script>
+
+
+</body>
+</html>
